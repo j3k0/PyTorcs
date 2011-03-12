@@ -1,0 +1,46 @@
+// The name of the overlay comes first
+HUD/Panel
+{
+    zorder 200
+
+    container Panel(HUD/SpeedoPanel)
+    {
+        // Center it horzontally, put it at the top
+        left 0.35
+        top 0.8
+        width 0.15
+        height 0.2
+        material HUD/Speedo
+
+        // Another panel nested in this one
+        container Panel(HUD/SpeedoNeedle)
+        {
+             left 0.01
+             top 0.01
+             width 0.13
+             height 0.18
+             material HUD/Speedo_Needle
+        }
+    }
+
+
+    container Panel(HUD/TachoPanel)
+    {
+        // Center it horzontally, put it at the top
+        left 0.5
+        top 0.8
+        width 0.15
+        height 0.2
+        material HUD/Tacho
+
+        // Another panel nested in this one
+        container Panel(HUD/TachoNeedle)
+        {
+             left 0.03
+             top 0.03
+             width 0.09
+             height 0.14
+             material HUD/Tacho_Needle
+        }
+    }
+}

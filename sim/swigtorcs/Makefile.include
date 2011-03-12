@@ -1,0 +1,25 @@
+SWIGTORCS_FILES = \
+	swigtorcs/tGfParmHandle.cs swigtorcs/tReCarInfo.cs swigtorcs/tTrackSurface.cs \
+	swigtorcs/tInitCar.cs swigtorcs/tCarPenaltyHead.cs swigtorcs/tFloatArray.cs \
+	swigtorcs/tRaceModIft.cs swigtorcs/tTrackBarrier.cs swigtorcs/t3DdArray.cs \
+	swigtorcs/t3Di.cs swigtorcs/tGraphicItf.cs swigtorcs/tTrackOwnPit.cs \
+	swigtorcs/tCarEltArray.cs swigtorcs/SWIGTYPE_p_float.cs swigtorcs/tCarPitCmd.cs \
+	swigtorcs/tPosd.cs swigtorcs/tModInfoArray.cs swigtorcs/tPublicCar.cs \
+	swigtorcs/tSimItf.cs swigtorcs/tSegExt.cs swigtorcs/SWIGTYPE_p_p_CarElt.cs \
+	swigtorcs/SWIGTYPE_p_f_int_p_CarElt_p_Situation__int.cs swigtorcs/tCarElt.cs \
+	swigtorcs/SWIGTYPE_p_p_tModList.cs swigtorcs/SWIGTYPE_p_int.cs swigtorcs/SWIGTYPE_p_vec2f.cs \
+	swigtorcs/tTrack.cs swigtorcs/tRaceAdmInfo.cs swigtorcs/tTrackSeg.cs \
+	swigtorcs/TorcsItf.cs swigtorcs/tForces.cs swigtorcs/tCarPenalty_link.cs \
+	swigtorcs/SWIGTYPE_p_void.cs swigtorcs/tTurnMarksInfo.cs swigtorcs/tGfParm.cs \
+	swigtorcs/tCollisionState.cs swigtorcs/tPrivCar.cs swigtorcs/tIntArray.cs \
+	swigtorcs/tTrackPitInfo.cs swigtorcs/tVisualAttributes.cs swigtorcs/SWIGTYPE_p_p_CarPenalty.cs \
+	swigtorcs/tCarCtrl.cs swigtorcs/tSituation.cs swigtorcs/tRaceEngineInfo.cs \
+	swigtorcs/tTrackGraphicInfo.cs swigtorcs/SWIGTYPE_p_p_char.cs swigtorcs/tWheelStateArray.cs \
+	swigtorcs/tRobotItf.cs swigtorcs/t3Df.cs swigtorcs/t3Dd.cs \
+	swigtorcs/tTrkLocPos.cs swigtorcs/TorcsItfPINVOKE.cs swigtorcs/tRmMovieCapture.cs \
+	swigtorcs/tRoadCam.cs swigtorcs/tWheelState.cs swigtorcs/tCarPenalty.cs \
+	swigtorcs/tPosdArray.cs swigtorcs/tRmInfo.cs swigtorcs/tWheelSpec.cs \
+	swigtorcs/tTrackItf.cs swigtorcs/tDynPt.cs swigtorcs/tWheelSpecArray.cs \
+	swigtorcs/SWIGTYPE_p_a_32__char.cs swigtorcs/tRmCarRules.cs swigtorcs/tModInfo.cs \
+	swigtorcs/tRobotItfArray.cs swigtorcs/tCarRaceInfo.cs
+

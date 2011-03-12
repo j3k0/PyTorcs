@@ -16,10 +16,10 @@ class MainClass(object):
 			elif args[0] == "--quick-race":
 				controller.InitQuickRace()
 			else: # if (args[1] == "--help")
-				Console.Out.WriteLine("usage: openracing [options]")
+				Console.Out.WriteLine("usage: PyTorcs [options]")
 				Console.Out.WriteLine("options:")
-				Console.Out.WriteLine("       --console        Launch a race immediatly. No GUI / No Graphics.")
-				Console.Out.WriteLine("       --quick-race     Launch a race immediatly. No GUI.")
+				Console.Out.WriteLine("       --console        Launch a race immediately. No GUI / No Graphics.")
+				Console.Out.WriteLine("       --quick-race     Launch a race immediately. No GUI.")
 				return 
 		else:
 			controller.Init()

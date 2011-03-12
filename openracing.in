@@ -1,0 +1,21 @@
+#!/bin/sh
+
+export LC_ALL="C"
+export RELATIVE_DIR=`dirname $0`
+export RELATIVE_EXE="${RELATIVE_DIR}/src/openracing.exe"
+if X$USE_MONODEVELOP == XYES
+then
+    RELATIVE_EXE=monodevelop-project/bin/OpenRacing.exe
+fi
+
+export DYLD_LIBRARY_PATH=@prefix@/lib/openracing:@myguinet_lib@:@ogredotnet_lib@:@tao_lib@:$DYLD_LIBRARY_PATH
+export LD_LIBRARY_PATH=@prefix@/lib/openracing:@myguinet_lib@:@ogredotnet_lib@:@tao_lib@:$LD_LIBRARY_PATH
+export MONO_PATH=@ogredotnet_lib@:@myguinet_lib@:@tao_lib@:$MONO_PATH
+if test -f "$RELATIVE_EXE"
+then
+    export LD_LIBRARY_PATH=${RELATIVE_DIR}/src/libsimulator/.libs:$LD_LIBRARY_PATH
+    export DYLD_LIBRARY_PATH=${RELATIVE_DIR}/src/libsimulator/.libs:$DYLD_LIBRARY_PATH
+    exec @MONO@ $MONO_EXTRA_ARGS "$RELATIVE_EXE" "$@"
+else
+    exec @MONO@ $MONO_EXTRA_ARGS @prefix@/lib/openracing/openracing.exe "$@"
+fi

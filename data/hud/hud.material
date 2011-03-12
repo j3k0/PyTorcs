@@ -1,0 +1,77 @@
+material HUD/Speedo
+{
+    technique
+    {
+        pass
+        {
+            lighting off
+              scene_blend alpha_blend
+              depth_check off
+
+              texture_unit
+              {
+                  texture speedo.png
+              }   
+        }  
+    }  
+}
+
+
+material HUD/Speedo_Needle
+{
+    technique
+    {
+        pass
+        {
+            lighting off
+              scene_blend add
+              depth_check off
+              depth_write off
+              cull_hardware none
+
+              texture_unit
+              {
+                  texture needle_int.png
+              }
+        }
+    }
+}
+
+material HUD/Tacho
+{
+    technique
+    {
+        pass
+        {
+            lighting off
+              scene_blend alpha_blend
+              depth_check off
+
+              texture_unit
+              {
+                  texture tacho.png
+              }   
+        }  
+    }  
+}
+
+
+material HUD/Tacho_Needle
+{
+    technique
+    {
+        pass
+        {
+            lighting off
+              scene_blend add
+              depth_check off
+              depth_write off
+              cull_hardware none
+
+              texture_unit
+              {
+                  texture needle_int.png
+              }
+        }
+    }
+}

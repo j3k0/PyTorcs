@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<OpenRacing xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <RaceManager>
+    <RaceFile>raceman.xml</RaceFile>
+  </RaceManager>
+  <Graphic>
+    <Quality>High</Quality>
+  </Graphic>
+  <Drivers>
+    <Driver>
+      <Module>Human</Module>
+    </Driver>
+    <Driver>
+      <Module>Sharpy</Module>
+    </Driver>
+  </Drivers>
+</OpenRacing>

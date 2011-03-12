@@ -1,0 +1,51 @@
+#!/bin/bash
+
+DEFAULT_DIR="/usr/local/share/games/openracing"
+
+OGRE_DIR=@ogredotnet_lib@
+DATA_DIR=@top_srcdir@/data
+
+echo -n "Where do you want to install? [$DEFAULT_DIR] "
+read -e DIR_NAME
+
+if test -z $DIR_NAME
+then
+    DIR_NAME=$DEFAULT_DIR
+fi
+
+if test -d $DIR_NAME
+then
+    echo 
+    echo "Installing OpenRacing data on $DIR_NAME (from $DATA_DIR)"
+    echo 
+    echo Cleaning previously installed files
+    echo -ne '[         ]\r'
+    rm -fr $DIR_NAME/cars
+    echo -ne '[-->      ]\r'
+    rm -fr $DIR_NAME/drivers
+    echo -ne '[----->   ]\r'
+    rm -fr $DIR_NAME/tracks
+    echo '[-------->]'
+    echo 
+    echo Copy new files
+    echo -ne '[         ]\r'
+    cp $OGRE_DIR/libOgreBindings.so $DIR_NAME
+    cp $OGRE_DIR/plugins-unix.cfg $DIR_NAME/plugins.cfg
+    cp `find @top_builddir@ -name '*.dll' -o -name '*.so'` $DIR_NAME
+    echo -ne '[->       ]\r'
+    cp -r $DATA_DIR/cars $DIR_NAME
+    echo -ne '[--->     ]\r'
+    cp -r $DATA_DIR/categories $DIR_NAME
+    echo -ne '[----->   ]\r'
+    cp -r $DATA_DIR/data $DATA_DIR/drivers $DIR_NAME
+    echo -ne '[------>  ]\r'
+    cp -r $DATA_DIR/tracks $DIR_NAME
+    echo -ne '[-------> ]\r'
+    cp -r $DATA_DIR/raceman.xml $DATA_DIR/ogre.cfg $DATA_DIR/resources.cfg $DIR_NAME
+    echo '[-------->]'
+    echo 
+    echo Done.
+else
+    echo "$DIR_NAME is not a valid directory"
+fi
+

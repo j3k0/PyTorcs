@@ -1,0 +1,140 @@
+AC_INIT(README)
+AC_CONFIG_MACRO_DIR([m4])
+AC_CONFIG_AUX_DIR(config)
+AC_CONFIG_SRCDIR(src/Main.cs)
+AC_CANONICAL_SYSTEM
+
+AM_INIT_AUTOMAKE(openracing, 0.1)
+# AM_MAINTAINER_MODE
+
+dnl -------------------------------------------
+dnl     OgreDotNet support
+dnl -------------------------------------------
+ogredotnet_lib=
+AC_ARG_WITH(ogredotnet,
+            [  --with-ogredotnet       specify path of OgreDotNet's binaries],
+            [if test -n ${with_ogredotnet}; then
+                ogredotnet_lib=${with_ogredotnet};
+                dcheck="$dcheck   --with-ogredotnet=${with_ogredotnet} ";
+            else
+                ogredotnet_lib=${libdir}/ogredotnet;
+            fi
+            ],
+            [ogredotnet_lib=${libdir}/ogredotnet;]
+           )
+AC_CHECK_FILES($ogredotnet_lib/OgreDotNet.dll $ogredotnet_lib/Math3D.dll, [],
+               AC_MSG_ERROR([could not find ogredotnet dlls in $ogredotnet_lib please use --with-ogredotnet to set the apropriate path]))
+AC_SUBST(ogredotnet_lib)
+
+dnl -------------------------------------------
+dnl     MyGUI.Net support
+dnl -------------------------------------------
+myguinet_lib=
+AC_ARG_WITH(myguinet,
+            [  --with-myguinet       specify path of MyGUI.Net's binaries],
+            [if test -n ${with_myguinet}; then
+                myguinet_lib=${with_myguinet};
+                dcheck="$dcheck   --with-myguinet=${with_myguinet} ";
+            else
+                myguinet_lib=${libdir}/myguinet;
+            fi
+            ],
+            [myguinet_lib=${libdir}/myguinet;]
+           )
+AC_CHECK_FILES($myguinet_lib/MyGUI.dll, [],
+               AC_MSG_ERROR([could not find MyGUI.Net dlls in $myguinet_lib please use --with-myguinet to set the apropriate path]))
+AC_SUBST(myguinet_lib)
+
+dnl -------------------------------------------
+dnl     TAO support
+dnl -------------------------------------------
+tao_lib=
+AC_ARG_WITH(tao,
+            [  --with-tao       specify path of Tao's binaries],
+            [if test -n ${with_tao}; then
+                tao_lib=${with_tao};
+                dcheck="$dcheck   --with-tao=${with_tao} ";
+            else
+                tao_lib=${libdir}/tao;
+            fi
+            ],
+            [tao_lib=${libdir}/tao;]
+           )
+AC_CHECK_FILES($tao_lib/Tao.Ode.dll, [],
+               AC_MSG_ERROR([could not find Tao's dlls in $tao_lib please use --with-tao to set the apropriate path]))
+AC_SUBST(tao_lib)
+
+dnl -------------------------------------------
+dnl     C++ and Libtool support
+dnl -------------------------------------------
+AC_PROG_CXX
+AC_DISABLE_STATIC
+AM_PROG_LIBTOOL
+AM_PROG_INSTALL
+
+dnl -------------------------------------------
+dnl     Swig support
+dnl -------------------------------------------
+AC_PROG_SWIG(1.3.21)
+SWIG_ENABLE_CXX
+
+dnl pkg-config
+#AC_PATH_PROG(PKG_CONFIG, pkg-config, no)
+#if test "x$PKG_CONFIG" = "xno"; then
+#	AC_MSG_ERROR([You need to install pkg-config])
+#fi
+
+dnl C# compiler
+AC_PATH_PROG(CSC, csc, no)
+AC_PATH_PROG(GMCS, gmcs, no)
+AC_PATH_PROG(MONO, mono, no)
+
+dnl -------------------------------------------
+dnl     Mono/C# support
+dnl -------------------------------------------
+CS="C#"
+if test "x$CSC" = "xno" -a "x$MCS" = "xno"  ; then
+	dnl AC_MSG_ERROR([You need to install a C# compiler])
+	AC_MSG_ERROR([No $CS compiler found])
+fi
+if test "x$GMCS" = "xno" ; then
+	GMCS=$CSC
+fi
+if test "x$MONO" = "xno"; then
+	AC_MSG_ERROR([No mono runtime found])
+fi
+AC_SUBST(GMCS)
+
+OPENRACING_DATADIR=share/openracing
+AC_SUBST(OPENRACING_DATADIR)
+
+dnl ---------------------------------------
+dnl STL / Freetype / Ogre / OIS (for MyGUI)
+dnl ---------------------------------------
+dnl OPENRACING_USE_STLPORT
+dnl AC_CHECK_FT2(9.0.0)
+dnl OPENRACING_CHECK_OGRE
+dnl OPENRACING_CHECK_OIS
+dnl OPENRACING_CHECK_MYGUI
+
+dnl -------------------------------------------
+dnl     Generated makefiles
+dnl -------------------------------------------
+AC_OUTPUT([
+Makefile
+man/Makefile
+resources/Makefile
+src/AssemblyInfo.cs
+src/Config.cs
+src/Makefile
+src/libsimulator/Makefile
+src/libsimulator/interfaces/Makefile
+src/libsimulator/plib/Makefile
+src/libsimulator/simuv2/Makefile
+src/libsimulator/tgf/Makefile
+src/libsimulator/txml/Makefile
+src/swigtorcs/Makefile
+data/Makefile
+data/install.sh
+])
+dnl src/swigmisc/Makefile
