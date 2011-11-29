@@ -1,15 +1,20 @@
-from System import *
-from OpenRacing.Core import *
-from OpenRacing.Graphic import *
-from OpenRacing.Audio import *
+#from System import *
+#from OpenRacing.Core import *
+#from OpenRacing.Graphic import *
+#from OpenRacing.Audio import *
 
-class ApplicationState(object):
-	def __init__(self):
+from OpenRacingConfig import *
+
+class ApplicationState:
+	RACING = 1
+	EXITING = 2
+	MAIN_MENU = 3
+	CONFIG_MENU = 4
 
 #
 # Initialize and launch OpenRacing GUI and races
 #
-class ApplicationController(IGuiController): # Speed of the simulation relative to real time # Minimal simulation step
+class ApplicationController: # Speed of the simulation relative to real time # Minimal simulation step
 	# Exit requested
 	# Manager of the race
 	def __init__(self):
@@ -23,7 +28,7 @@ class ApplicationController(IGuiController): # Speed of the simulation relative 
 		self._mAudioManager = None
 		self._mInputManager = None
 		self._mConfig = OpenRacingConfig("openracing.xml")
-		self._mInputManager = InputManager()
+		# self._mInputManager = InputManager()
 
 	def RunRace(self):
 		self._mRaceManager = RaceManager()
@@ -57,6 +62,7 @@ class ApplicationController(IGuiController): # Speed of the simulation relative 
 					self._mState = ApplicationState.EXITING
 					self._mExit = True
 				finally:
+					pass
 			if firstStep:
 				# First step takes long because of initializations. Fix the starting time.
 				start = self._SimuSpeed * (DateTime.Now.Ticks / TimeSpan.TicksPerSecond) + before - now
