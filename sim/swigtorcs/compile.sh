@@ -5,4 +5,6 @@ PYTHON_FLAGS="-I/System/Library/Frameworks/Python.framework/Versions/2.6/include
 #python-config --cflags
 
 swig -Wall -python -c++ -I../libsimulator/interfaces -I../libsimulator -I.. -outdir . swigtorcs.i
-g++ $PYTHON_FLAGS -I../libsimulator/interfaces -I../libsimulator -I.. -c swigtorcs_wrap.cxx
+SRCDIR=`pwd`
+cd ../build
+g++ $PYTHON_FLAGS -I../libsimulator/interfaces -I../libsimulator -I.. -c $SRCDIR/swigtorcs_wrap.cxx
