@@ -9,4 +9,5 @@ do
 	cd ..
 done
 
-g++ -arch i386 -shared -ldl -lpython2.6 build/*.o -o libsimulator.so
+# g++ -arch i386 -shared -ldl -lpython2.6 build/*.o -o libsimulator.so
+g++ `python-config --ldflags` -shared build/*.o -o libsimulator.so

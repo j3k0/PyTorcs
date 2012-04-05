@@ -4,6 +4,7 @@
 #from OpenRacing.Audio import *
 
 from OpenRacingConfig import *
+from core.RaceManager import *
 
 class ApplicationState:
 	RACING = 1

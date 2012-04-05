@@ -17,17 +17,18 @@
 # Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA 
 #
 #
-from System import *
-from SwigTorcs import *
-from System.Collections.Generic import *
-from OpenRacing.Ode import *
-from OpenRacing.Core.Track import *
+
+#from System import *
+from swigtorcs.TorcsItf import *
+#from System.Collections.Generic import *
+#from OpenRacing.Ode import *
+#from OpenRacing.Core.Track import *
 
 class RaceManager(object): # Prevents objects from being freed
+	@staticmethod
 	def Reset():
-		self._Pool.Clear()
-
-	Reset = staticmethod(Reset)
+		# self._Pool.Clear()
+		pass
 
 	# All loaded modules: references are kept to prevent garbage collection # Universal Track Interface
 	def get_Track(self):
@@ -36,7 +37,7 @@ class RaceManager(object): # Prevents objects from being freed
 	Track = property(fget=get_Track)
 
 	def __init__(self):
-		self._Pool = List[Object]()
+		# self._Pool = List[Object]()
 		self._mGfParm = None
 		self._mSituation = tSituation()
 		self._mRobots = None

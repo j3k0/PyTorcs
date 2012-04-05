@@ -8,12 +8,13 @@ cd ../build
 for i in $C_SOURCES
 do
 	echo "C $i"
-	gcc -arch i386 -fpic -I../libsimulator/interfaces -I../libsimulator -I.. -c $SRCDIR/$i 2> /dev/null
+# gcc -arch i386 -fpic -I../libsimulator/interfaces -I../libsimulator -I.. -c $SRCDIR/$i 2> /dev/null
+	gcc `python-config --cflags` -fpic -I../libsimulator/interfaces -I../libsimulator -I.. -c $SRCDIR/$i 2> /dev/null
 done
 
 for i in $CPP_SOURCES
 do
 	echo "C $i"
-	g++ -arch i386 -fpic -I../libsimulator/interfaces -I../libsimulator -I.. -c $SRCDIR/$i 2> /dev/null
+	g++ `python-config --cflags` -fpic -I../libsimulator/interfaces -I../libsimulator -I.. -c $SRCDIR/$i 2> /dev/null
 done
 
