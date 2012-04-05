@@ -70,6 +70,13 @@ class tGfParm {
     int ListSeekNext(char *path);
     char *ListGetCurEltName(char *path);
     int ListClean(char *path);
+
+    enum RMode {
+            RMode_STD = 0x01, /**< if handle already openned return it */
+            RMode_REREAD = 0x02,  /**< reread the parameters from file and release the previous ones */
+            RMode_CREAT = 0x04,   /**< Create the file if doesn't exist */
+            RMode_PRIVATE = 0x08
+    };
 };
 
 #define GFPARM_MMODE_SRC	1 /**< use ref and modify existing parameters with tgt */

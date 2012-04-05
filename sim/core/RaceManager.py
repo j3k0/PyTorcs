@@ -48,7 +48,8 @@ class RaceManager(object): # Prevents objects from being freed
 
 	def Init(self, raceFile, numBots, inputManager):
 		self._mNumBots = numBots
-		self._mGfParm = tGfParm(raceFile, tGfParm.RMode.STD)
+		self._mGfParm = tGfParm()
+                self._mGfParm.ReadFile(raceFile, tGfParm.RMode_STD)
 		self._mSituation.RaceInfo.State = TorcsItf.RM_RACE_PRESTART
 		self._mRaceName = self._mGfParm.GetStr("Header", "name", None)
 		self._mSituation.RaceInfo.CarsCount = 0

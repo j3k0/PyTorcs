@@ -10,10 +10,16 @@
       return new tGfParmHandle($imcall, false);
     }"
 /* %typemap(cstype) GfParmHandle ** "out tGfParmHandle"
-%typemap(csin) GfParmHandle ** "out tGfParmHandle.getCPtr($csinput)" */
+   %typemap(csin) GfParmHandle ** "out tGfParmHandle.getCPtr($csinput)" */
 
 %nodefaultctor tGfParmHandle; /* No default/implicit destructor for tGfParmHandle */
 %nodefaultdtor tGfParmHandle; /* No default/implicit destructor for tGfParmHandle */
+
+/* %extend tGfParm {
+  tGfParm(const char *file, RMode mode) {
+    ReadFile(file, (int)mode);
+  }
+}; */
 
 %typemap(cscode) tGfParm %{
   public tGfParm(string file, RMode mode) : this() {
