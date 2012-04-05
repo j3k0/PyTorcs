@@ -58,7 +58,7 @@ class ApplicationController: # Speed of the simulation relative to real time # M
 			if self._mGraphicModule != None:
 				try:
 					self._mGraphicModule.Refresh(self._mRaceManager.Situation)
-				except GraphicException, ge:
+				except GraphicException as ge:
 					Console.Out.WriteLine(" Error while refreshing screen: {0}\nMore details:\n{1}", ge, ge.MoreDetails)
 					self._mState = ApplicationState.EXITING
 					self._mExit = True

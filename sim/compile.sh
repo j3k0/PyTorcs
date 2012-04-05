@@ -1,3 +1,5 @@
+. config-`uname -n`
+
 mkdir -p build
 rm -f build/*.o
 
@@ -10,4 +12,4 @@ do
 done
 
 # g++ -arch i386 -shared -ldl -lpython2.6 build/*.o -o libsimulator.so
-g++ `python-config --ldflags` -shared build/*.o -o libsimulator.so
+g++ `$PYTHON_CONFIG --ldflags` -shared build/*.o -o libsimulator.so
