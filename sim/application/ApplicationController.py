@@ -3,7 +3,7 @@
 #from OpenRacing.Graphic import *
 #from OpenRacing.Audio import *
 
-from OpenRacingConfig import *
+from .OpenRacingConfig import *
 from core.RaceManager import *
 
 class ApplicationState:
