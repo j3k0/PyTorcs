@@ -12,4 +12,4 @@ do
 done
 
 # g++ -arch i386 -shared -ldl -lpython2.6 build/*.o -o libsimulator.so
-g++ `$PYTHON_CONFIG --ldflags` -shared build/*.o -o libsimulator.so
+g++ `$PYTHON_CONFIG --ldflags` -shared build/*.o -o _TorcsItf.so
